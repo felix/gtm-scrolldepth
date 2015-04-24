@@ -1,0 +1,48 @@
+# Scroll Depth tracker for Google Tag Manager
+
+Track the depth of users' scroll events using GTM.
+
+This is a pure Javascript (no jQuery required) implementation.
+
+It will emit the event 'ScrollDistance' and set the following data layer variables: eventCategory, eventAction, eventLabel & eventValue.
+
+## Usage
+
+Setting up GTM is for you to do.
+
+You can then use this snippet like so:
+
+- Create a new tag of type Custom HTML and load this snippet.
+- Ensure the above tag is fired on any DOM events ({{ event }} equals gtm.dom).
+- Create the following four macros (name: data layer variable):
+
+    datalayerEventCategory: eventCategory
+    datalayerEventAction: eventAction
+    datalayerEventLabel: eventLabel
+    datalayerEventValue: eventValue
+
+- Create another tag of type Universal Analytics which has the following parameters:
+
+    Category: {{ datalayerEventCategory }}
+    Action:   {{ datalayerEventAction }}
+    Label:    {{ datalayerEventLabel }}
+    Value:    {{ datalayerEventValue }}
+    Non-Interation Hit: true
+
+- Ensure the above tag is fired on event 'SrollDistance'.
+
+## Contributing
+
+1. Fork it!
+2. Create your feature branch: `git checkout -b my-new-feature`
+3. Commit your changes: `git commit -am 'Add some feature'`
+4. Push to the branch: `git push origin my-new-feature`
+5. Submit a pull request :D
+
+## Credits
+
+Inspiration taken from a number of different sources. Let me know if not credited.
+
+## License
+
+Released under [the MIT license](https://github.com/felix/gtm-scrolldepth/blob/master/LICENSE).
